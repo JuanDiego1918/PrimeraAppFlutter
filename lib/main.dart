@@ -3,8 +3,7 @@ import 'package:intl/intl.dart';
 import 'CustomAppBar.dart';
 import 'CustomShapeClipper.dart';
 
-void main() =>
-    runApp(MaterialApp(
+void main() => runApp(MaterialApp(
       title: "Primera App con flutter",
       debugShowCheckedModeBanner: false,
       home: HomeScreen(),
@@ -15,7 +14,7 @@ Color firstColor = Color(0xFFF47D15);
 Color secondColor = Color(0xFFEF772C);
 
 ThemeData appTheme =
-ThemeData(primaryColor: Color(0xFFF3791A), fontFamily: 'Oxygen');
+    ThemeData(primaryColor: Color(0xFFF3791A), fontFamily: 'Oxygen');
 
 List<String> locations = ['Boston (BOS)', 'New York City (JFK)'];
 
@@ -35,9 +34,9 @@ class HomeScreen extends StatelessWidget {
 }
 
 const TextStyle dropDownLabelStyle =
-TextStyle(color: Colors.white, fontSize: 16.0);
+    TextStyle(color: Colors.white, fontSize: 16.0);
 const TextStyle dropDownMenuItemStyle =
-TextStyle(color: Colors.black, fontSize: 16.0);
+    TextStyle(color: Colors.black, fontSize: 16.0);
 
 class HomeScreenTopContainer extends StatefulWidget {
   @override
@@ -65,7 +64,7 @@ class _HomeScreenTopContainerState extends State<HomeScreenTopContainer> {
                   height: 50.0,
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(14.0),
                   child: Row(
                     children: <Widget>[
                       Icon(
@@ -94,22 +93,22 @@ class _HomeScreenTopContainerState extends State<HomeScreenTopContainer> {
                           ],
                         ),
                         itemBuilder: (BuildContext context) =>
-                        <PopupMenuItem<int>>[
-                          PopupMenuItem(
-                            child: Text(
-                              locations[0],
-                              style: dropDownMenuItemStyle,
-                            ),
-                            value: 0,
-                          ),
-                          PopupMenuItem(
-                            child: Text(
-                              locations[1],
-                              style: dropDownMenuItemStyle,
-                            ),
-                            value: 1,
-                          ),
-                        ],
+                            <PopupMenuItem<int>>[
+                              PopupMenuItem(
+                                child: Text(
+                                  locations[0],
+                                  style: dropDownMenuItemStyle,
+                                ),
+                                value: 0,
+                              ),
+                              PopupMenuItem(
+                                child: Text(
+                                  locations[1],
+                                  style: dropDownMenuItemStyle,
+                                ),
+                                value: 1,
+                              ),
+                            ],
                       ),
                       Spacer(),
                       Icon(
@@ -133,7 +132,7 @@ class _HomeScreenTopContainerState extends State<HomeScreenTopContainer> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 32.0),
                   child: Material(
-                    elevation: 5.0,
+                    elevation: 10.0,
                     borderRadius: BorderRadius.all(Radius.circular(30.0)),
                     child: TextField(
                       controller: TextEditingController(text: locations[1]),
@@ -141,10 +140,10 @@ class _HomeScreenTopContainerState extends State<HomeScreenTopContainer> {
                       cursorColor: appTheme.primaryColor,
                       decoration: InputDecoration(
                         contentPadding: EdgeInsets.symmetric(
-                            horizontal: 32.0, vertical: 14.0),
+                            horizontal: 32.0, vertical: 13.0),
                         suffix: Material(
-                          elevation: 2.0,
                           borderRadius: BorderRadius.all(Radius.circular(30.0)),
+                          color: Colors.transparent,
                           child: Icon(
                             Icons.search,
                             color: Colors.black,
@@ -176,7 +175,7 @@ class _HomeScreenTopContainerState extends State<HomeScreenTopContainer> {
                     ),
                     InkWell(
                       child:
-                      ChoiceChip(Icons.hotel, "Hotels", !isFlightSelected),
+                          ChoiceChip(Icons.hotel, "Hotels", !isFlightSelected),
                       onTap: () {
                         setState(() {
                           isFlightSelected = false;
@@ -212,8 +211,8 @@ class _ChoiceChipState extends State<ChoiceChip> {
       padding: EdgeInsets.symmetric(horizontal: 18.0, vertical: 8.0),
       decoration: widget.isSelect
           ? BoxDecoration(
-          color: Colors.white.withOpacity(0.15),
-          borderRadius: BorderRadius.all(Radius.circular(20.0)))
+              color: Colors.white.withOpacity(0.15),
+              borderRadius: BorderRadius.all(Radius.circular(20.0)))
           : null,
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -273,16 +272,17 @@ List<CityCard> cityCards = [
   CityCard("assets/images/centrar_park.jpg", "Central Park", "Feb 2019", "45",
       4299, 2250),
   CityCard("assets/images/coliseo.jpg", "Coliseo Romano", "Apr 2019", "50",
-      9999,4159),
-  CityCard("assets/images/torre.jpg", "Torre Eiffel", "Dec 2019", "40",5999,
-      2399)
+      9999, 4159),
+  CityCard(
+      "assets/images/torre.jpg", "Torre Eiffel", "Dec 2019", "40", 5999, 2399)
 ];
 
-final formatCurrency=new NumberFormat.simpleCurrency();
+final formatCurrency = new NumberFormat.simpleCurrency();
 
 class CityCard extends StatelessWidget {
   final String imagePath, cityName, monthYear, discount;
   final int oldPrice, newPrice;
+
   CityCard(this.imagePath, this.cityName, this.monthYear, this.discount,
       this.oldPrice, this.newPrice);
 
@@ -316,7 +316,10 @@ class CityCard extends StatelessWidget {
                       gradient: LinearGradient(
                           begin: Alignment.bottomCenter,
                           end: Alignment.topCenter,
-                          colors: [Colors.black, Colors.black.withOpacity(0.1)]),
+                          colors: [
+                            Colors.black,
+                            Colors.black.withOpacity(0.1)
+                          ]),
                     ),
                   ),
                 ),
@@ -348,16 +351,17 @@ class CityCard extends StatelessWidget {
                         ],
                       ),
                       Container(
-                          padding:
-                          EdgeInsets.symmetric(horizontal: 6.0, vertical: 2.0),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 6.0, vertical: 2.0),
                           decoration: BoxDecoration(
                               shape: BoxShape.rectangle,
                               color: Colors.white,
                               borderRadius:
-                              BorderRadius.all(Radius.circular(10.0))),
+                                  BorderRadius.all(Radius.circular(10.0))),
                           child: Text(
                             "$discount%",
-                            style: TextStyle(fontSize: 14.0, color: Colors.black),
+                            style:
+                                TextStyle(fontSize: 14.0, color: Colors.black),
                           ))
                     ],
                   ),
@@ -369,10 +373,26 @@ class CityCard extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              SizedBox(width: 5.0,),
-              Text("(${formatCurrency.format(newPrice)})",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 14.0),),
-              SizedBox(width: 5.0,),
-              Text("(${formatCurrency.format(oldPrice)})",style: TextStyle(color: Colors.grey,fontWeight: FontWeight.normal,fontSize: 12.0),),
+              SizedBox(
+                width: 5.0,
+              ),
+              Text(
+                "(${formatCurrency.format(newPrice)})",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14.0),
+              ),
+              SizedBox(
+                width: 5.0,
+              ),
+              Text(
+                "(${formatCurrency.format(oldPrice)})",
+                style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.normal,
+                    fontSize: 12.0),
+              ),
             ],
           ),
         ],
